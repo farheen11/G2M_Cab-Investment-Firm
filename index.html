@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>G2M Cab Insights for Investment</title>
+    <meta charset = "utf-8">
+    <meta name="author" content="AnikeSadia">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href ="static/style.css">
+</head>
+<body>
+    <div class = "data">
+        <h1> Cab Price Prediction </h1>
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action = "{{ url_for('predict')}}"  method = "post">
+            <input class = "Input" type = "text" name = "A1" placeholder="Age" required/>
+            <input class = "Input" type = "text" name = "A2" placeholder= "KM-Travelled" required/>
+            <select name="company" class = "Input">
+                {% for o in data1 %}
+                <option value = "{{o.MN}}" > {{o.MN}} </option>
+                {% endfor %}
+            </select><br><br>
+
+            <select name="company2" class="Input">
+                {% for o in data2 %}
+                <option value="{{o.CO}}" > {{o.CO}} </option>
+                {% endfor %}
+            </select><br><br>
+
+
+            <select name="company3" class="Input">
+                {% for o in data3 %}
+                <option value="{{o.GEN}}" > {{o.GEN}} </option>
+                {% endfor %}
+            </select><br><br>
+
+            <select name="company4" class="Input">
+                {% for o in data4 %}
+                <option value = "{{o.CY}}"> {{o.CY}} </option>
+                {% endfor %}
+            </select><br><br>
+
+
+            <button type="submit" class="predict-btn"> Predict </button>
+        </form>
+        <h3> {{prediction_text}} </h3>
+    </div>
+</body>
+</html>
